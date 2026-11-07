@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta name="google-site-verification" content="BKCAmH_-3GLr8BHKEtGpqXWQl2X1vK_XzUSL-oBmqV4" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>القرآن الكريم</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>القرآن الكريم</h1>
+    <p class="subtitle" id="subtitle"></p>
+  </header>
+
+  <!-- شريط الأدوات -->
+  <nav class="toolbar">
+    <div class="tabs">
+      <button id="navHome" class="tab active">📖 السور</button>
+      <button id="navSaved" class="tab">★ المحفوظات</button>
+    </div>
+
+    <div class="tools">
+      <label class="tool">
+        القارئ
+        <select id="reciterSel">
+          <option value="yasser">ياسر الدوسري</option>
+          <option value="minshawi">محمد صديق المنشاوي</option>
+           <option value="qarafi">عبدالله القرافي</option>
+        </select>
+      </label>
+            <div id="tasmeeBar" class="tasmee-bar" hidden>
+        <p id="tasmeeInfo"></p>
+      <div id="tasmeeBar" class="tasmee-bar" hidden>
+        <p id="tasmeeInfo"></p>
+        <p id="tasmeeHeard" class="tasmee-heard"></p>
+        <div class="tasmee-actions">
+          <button id="tMic" class="btn btn-primary">🎙️ ابدأ الميكروفون</button>
+          <button id="tHint" class="btn btn-light">💡 أظهر كلمة</button>
+          <button id="tReveal" class="btn btn-light">👁 أظهر الآية</button>
+          <button id="tListen" class="btn btn-light">🔊 استمع</button>
+          <button id="tReset" class="btn btn-light">↺ ابدأ من جديد</button>
+        </div>
+      </div>
+      </div>
+
+      <div class="tool">
+        <button id="fontMinus" class="tool-btn" title="تصغير الخط">أ-</button>
+        <button id="fontPlus" class="tool-btn" title="تكبير الخط">أ+</button>
+      </div>
+
+      <button id="themeBtn" class="tool-btn">🌙 ليلي</button>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- قائمة السور -->
+    <section id="listView">
+      <input type="search" id="searchInput" class="search" placeholder="ابحث عن سورة..." autocomplete="off">
+      <div id="surahGrid" class="surah-grid"></div>
+      <p id="listMessage" class="message">جاري تحميل السور...</p>
+    </section>
+
+    <!-- قراءة السورة -->
+    <section id="readerView" hidden>
+      <div class="reader-head">
+        <button id="backBtn" class="btn btn-light">→ رجوع للسور</button>
+        <button id="playSurahBtn" class="btn btn-primary">▶ استماع للسورة كاملة</button>
+      </div>
+
+      <div class="surah-banner">
+        <h2 id="surahTitle"></h2>
+        <p id="surahMeta"></p>
+      </div>
+
+      <label class="continuous">
+        <input type="checkbox" id="continuousChk">
+        تشغيل الآيات تباعاً بعد الآية
+      </label>
+
+      <p id="bismillah" class="bismillah" hidden>بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
+
+      <div id="ayahs" class="ayahs"></div>
+      <p id="readerMessage" class="message"></p>
+    </section>
+
+    <!-- الآيات المحفوظة -->
+    <section id="savedView" hidden>
+      <h2 class="page-title">★ الآيات المحفوظة</h2>
+      <div id="savedList" class="saved-list"></div>
+      <p id="savedMessage" class="message"></p>
+    </section>
+
+  </main>
+
+  <!-- قائمة خيارات الآية -->
+  <div id="ayahMenu" class="ayah-menu" hidden>
+    <div class="menu-head">
+      <span id="menuTitle"></span>
+      <button id="mClose" class="menu-close" title="إغلاق">✕</button>
+    </div>
+    <div class="menu-actions">
+      <button id="mPlay" class="btn btn-primary">▶ استمع للآية</button>
+      <button id="mFrom" class="btn btn-light">⏩ شغّل من هنا</button>
+      <button id="mCopy" class="btn btn-light">📋 نسخ</button>
+      <button id="mSave" class="btn btn-light">☆ حفظ</button>
+      <button id="tasmeeBtn" class="btn btn-light">🎤 تسميع</button>
+    </div>
+  </div>
+
+  <!-- شريط التشغيل -->
+  <div id="player" class="player" hidden>
+    <span id="nowPlaying"></span>
+    <button id="stopBtn" class="btn btn-light">⏹ إيقاف</button>
+  </div>
+
+  <audio id="audio" preload="none"></audio>
+
+  <script src="app.js"></script>
+</body>
+</html>
